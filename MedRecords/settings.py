@@ -85,9 +85,9 @@ WSGI_APPLICATION = 'MedRecords.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'MedRecords',  # Name of the database you just created
-        'USER': 'MedRecordsUser',  # Name of the user you just created
-        'PASSWORD': 'MedRecords1',  # Password for the user
+        'NAME': 'medrecords',  # Name of the database you just created
+        'USER': 'medrecordsuser',  # Name of the user you just created
+        'PASSWORD': 'Medrecords1',  # Password for the user
         'HOST': 'localhost',  # Assuming PostgreSQL is running locally
         'PORT': '5432',  # Default PostgreSQL port
     }
@@ -133,11 +133,6 @@ STATIC_URL = 'static/'
 # Directories where static files can be found during development
 STATICFILES_DIRS = [
     BASE_DIR / "records/static", # static folder in the records app
-]
-
-# Directories where static files can be found during development
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),  # main static folder in the project root
 ]
 
 # Default primary key field type

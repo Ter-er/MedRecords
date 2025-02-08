@@ -18,7 +18,7 @@ class Patient(models.Model):
     height =        models.FloatField()
     weight =        models.FloatField()
     condition =     models.TextField()
-    pdf_records =   models.ForeignKey('MedicalRecords', on_delete=models.CASCADE, null=True, blank=True)
+    pdf_records =   models.ForeignKey('MedicalRecords',related_name='patient_pdf_records', on_delete=models.CASCADE, null=True, blank=True)
     hospital =      models.CharField(max_length=100)
     emg_name =      models.CharField(max_length=100)
     emg_relationship = models.CharField(max_length=100)
@@ -30,8 +30,8 @@ class Patient(models.Model):
 
 
 class MedicalRecords(models.Model):
-    patient = models.ForeignKey(Patient, on_delete=models.CASCADE)
-    pdf_records = models.FileField(upload_to='MedRecords\media\PatientReports', blank=True, null=True)
+    patient = models.ForeignKey(Patient,related_name='medical_records_patient', on_delete=models.CASCADE)
+    pdf_records = models.FileField(upload_to='MedRecords/media/PatientReports', blank=True, null=True)
 
     def __str__(self):
         return self.patient.first_name + " " + self.patient.last_name + " - " + self.patient.national_id
