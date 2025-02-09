@@ -15,8 +15,11 @@ class MedUser(AbstractUser):
     hospital = models.CharField(max_length=100)
     department = models.CharField(max_length=100)
 
+    USERNAME_FIELD = 'email'  # Use email for authentication
+    REQUIRED_FIELDS = ['username']  # Make username a required field for other operations
+
     def __str__(self):
-        return f'{self.email} - {self.specialization}'
+        return f'{self.email}'
     
 class MedRole(models.Model):
     user = models.OneToOneField(MedUser, on_delete=models.CASCADE, related_name='role_profile')
