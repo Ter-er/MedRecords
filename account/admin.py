@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import MedUser, MedRole
+from .models import MedUser
 from django.contrib.auth.admin import UserAdmin
 
 # Define custom admin form for MedUser to display fields in a more readable way

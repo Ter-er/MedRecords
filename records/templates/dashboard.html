@@ -1,0 +1,135 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="{% static 'dashboard.css' %}">
+</head>
+<body>
+    <div class="sidebar">
+        <div class="logo">🏥</div>
+        <div class="nav-item"><i>🏠</i> Home</div>
+        <div class="nav-item"><i>👤</i> Profile</div>
+        <div class="nav-item"><i>💊</i> Prescription list</div>
+        <div class="nav-item"><i>🕒</i> Schedule</div>
+        <div class="nav-item"><i>⚙️</i> Settings</div>
+        <div class="nav-item" style="margin-top: auto;"><i>📤</i> Log out</div>
+    </div>
+
+    <div class="main-content">
+        <div class="header">
+            <div>
+                <div class="welcome">Hello Dr. Aisha ☀️</div>
+                <div class="subtitle">Hospital Management System</div>
+            </div>
+            <div style="display: flex; gap: 20px;">
+                <span>📧</span>
+                <span>🔔</span>
+                <img style="width:20px; height: 20px;" src="https://media.istockphoto.com/id/175399910/photo/confident-african-american-female-doctor-isolated.jpg?s=612x612&w=0&k=20&c=3L5M1Cv-SRX1TvUf67kpiRCjkca4u4nQUaH7l3IFZkc=" alt="Profile" style="border-radius: 50%;" />
+            </div>
+        </div>
+
+        <div class="breadcrumb">
+            <span>Dashboard</span> /
+            <span>Patient List</span> /
+            <span style="color: #1e88e5;">Patient Details</span>
+        </div>
+
+        <div class="profile-card">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbpF-lk7DDiSTDwt-gRgfGhhzpz2SsfU2__w&s" alt="Profile" class="profile-image" />
+            <div class="profile-info">
+                <h2>Jane Doe</h2>
+                <div class="designation">Kings Care Hospital</div>
+                <div class="role">Age: 39</div>
+            </div>
+        </div>
+
+        <div class="vital-signs">
+            <div class="vital-card">
+                <div class="vital-icon heart-rate">❤️</div>
+                <div>Heart Rate</div>
+                <div style="font-size: 20px; font-weight: 500;">80bpm</div>
+            </div>
+            <div class="vital-card">
+                <div class="vital-icon temperature">🌡️</div>
+                <div>Body Temperature</div>
+                <div style="font-size: 20px; font-weight: 500;">36.5°C</div>
+            </div>
+            <div class="vital-card">
+                <div class="vital-icon blood-pressure">💓</div>
+                <div>Blood Pressure</div>
+                <div style="font-size: 20px; font-weight: 500;">119/70 mm Hg</div>
+            </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 20px;">
+            <div class="info-section">
+                <h3>Information:</h3>
+                <div class="info-grid">
+                    <span class="info-label">Gender:</span>
+                    <span>Female</span>
+                    <span class="info-label">Date of Birth:</span>
+                    <span>16-06-1997</span>
+                    <span class="info-label">Location:</span>
+                    <span>Lugbe, Abuja</span>
+                    <span class="info-label">Blood Type:</span>
+                    <span>A+</span>
+                    <span class="info-label">Height:</span>
+                    <span>198cm</span>
+                    <span class="info-label">Weight:</span>
+                    <span>90kg</span>
+                    <span class="info-label">Allergies:</span>
+                    <span>Cat, Onions, Fish</span>
+                    <span class="info-label">Diseases:</span>
+                    <span>None</span>
+                </div>
+            </div>
+
+            <div style="display: grid; grid-template-rows: 1fr 1fr; gap: 20px;">
+                <div class="info-section">
+                    <h3>Recent Diagnosis</h3>
+                    <p>Not Available</p>
+                </div>
+                <div class="info-section">
+                    <h3>Patient Records</h3>
+                    <ul class="records-list">
+                        <li>
+                            <span>📄 Check Up result.pdf</span>
+                            <span>123kb</span>
+                        </li>
+                        <li>
+                            <span>📄 Dental X-ray result.pdf</span>
+                            <span>123kb</span>
+                        </li>
+                        <li>
+                            <span>📄 Check Up result.pdf</span>
+                            <span>123kb</span>
+                        </li>
+                        <li>
+                            <span>📄 Check Up result.pdf</span>
+                            <span>123kb</span>
+                        </li>
+                    </ul>
+                    <div style="text-align: right; margin-top: 10px;">
+                        <a href="#" style="color: #1e88e5; text-decoration: none;">Summary AI</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="upload-section">
+            <h3>Upload File</h3>
+            <div class="upload-box">
+                <div style="margin-bottom: 10px;">📄</div>
+                <div>Drag n Drop here</div>
+                <div>Or</div>
+                <div style="color: #1e88e5;">Browse</div>
+            </div>
+            <button class="btn-primary">Upload Now</button>
+        </div>
+    </div>
+</body>
+</html>

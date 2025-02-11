@@ -1,0 +1,115 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Patient</title>
+    <link rel="stylesheet" href="{% static 'search.css' %}">
+</head>
+<body>
+    <div class="sidebar">
+        <div class="logo">
+            <svg viewBox="0 0 24 24" width="60" height="60" fill="white">
+                <path d="M12 2L2 7v10l10 5 10-5V7L12 2zm0 2.8L19.5 8 12 11.2 4.5 8 12 4.8zM4 16.5v-7l8 3.2v7l-8-3.2zm16 0l-8 3.2v-7l8-3.2v7z"/>
+            </svg>
+        </div>
+        <a href="#" class="nav-item"><i>🏠</i> Home</a>
+        <a href="#" class="nav-item"><i>👥</i> Register Patient</a>
+        <a href="#" class="nav-item"><i>🔍</i> Search Patient</a>
+        <!-- <a href="#" class="nav-item"><i>📅</i> Book Appointment</a> -->
+        <a href="#" class="nav-item"><i>⚙️</i> Settings</a>
+        <a href="#" class="nav-item" style="margin-top: auto;"><i>📤</i> Log out</a>
+    </div>
+
+    <div class="main-content">
+        <div class="header">
+            <div>
+                <div class="welcome">Hello Aisha ☀️</div>
+                <div class="subtitle">Hospital Management System - Kings Care Hospital</div>
+            </div>
+            <div class="header-icons">
+                <span>📧</span>
+                <span>🔔</span>
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpTWMdWCC7GdXFGOq9XDB5BVC-Clp7kq4oGA&s" alt="Profile" style="width: 40px; height: 40px; border-radius: 50%;" />
+            </div>
+        </div>
+
+        <div class="profile-card">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpTWMdWCC7GdXFGOq9XDB5BVC-Clp7kq4oGA&s" alt="Profile" class="profile-image" />
+            <div class="profile-info">
+                <h2>Aisha Betty</h2>
+                <div class="designation">MBBS,FCPS</div>
+                <div class="role">Records Officer</div>
+                <div style="display: flex; justify-content: space-between; border-top: 1px dotted #ccc; padding-top: 15px; margin-top: 15px; color: #666;">
+                    <span>Employment ID: 123456mopd</span>
+                    <span>📅 10/03/2035</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="search-section">
+            <form method="post" action="{% url 'search' %}" class="search-form">
+                {% csrf_token %}
+                <select name="searchType" class="search-dropdown">
+                    <option value="">Search by</option>
+                    <option value="name">Patient Name</option>
+                    <option value="national_id">National ID</option>
+                </select>
+                <input type="text" name="searchValue" class="search-input" placeholder="Enter value" />
+                <button type="submit" class="search-button">Search</button>
+            </form>
+
+            {% if results %}
+            <table class="results-table">
+                <thead>
+                    <tr>
+                        <th>Full Name</th>
+                        <th>National ID</th>
+                        <th>Gender</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for patient in results %}
+                    <tr>
+                        <td>
+                            <a href="{% url 'dashboard' %}" class="patient-link">
+                                {{ patient.first_name }} {{ patient.last_name }}
+                            </a>
+                        </td>
+                        <td>{{ patient.national_id }}</td>
+                        <td>{{ patient.gender }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+            <div class="pagination">
+                {% if has_previous %}
+                <a href="?page={{ previous_page_number }}" class="page-link">Previous</a>
+                {% endif %}
+
+                {% for page_num in page_range %}
+                    {% if page_num == current_page %}
+                    <a href="?page={{ page_num }}" class="page-link active">{{ page_num }}</a>
+                    {% else %}
+                    <a href="?page={{ page_num }}" class="page-link">{{ page_num }}</a>
+                    {% endif %}
+                {% endfor %}
+
+                {% if has_next %}
+                <a href="?page={{ next_page_number }}" class="page-link">Next</a>
+                {% endif %}
+            </div>
+            {% endif %}
+
+            {% if no_results %}
+            <div class="no-results">
+                No patients found matching your search criteria.
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
